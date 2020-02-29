@@ -22,7 +22,9 @@ const shiftDetails = {
 
   checkIfShiftIsValid: (input) => {
     input.forEach(function (element) {
-      if (element.total >= 1 && element.total <= 24) {
+      if ((element.totalDayShiftHours >= 1 && element.totalDayShiftHours <= 24)
+      ||
+      (element.totalNightShiftHours >= 1 && element.totalNightShiftHours <= 24)) {
         element.isValid = true;
       } else {
         element.isValid = false;
