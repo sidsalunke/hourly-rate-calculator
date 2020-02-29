@@ -1,4 +1,5 @@
 const dayShiftLogic = require('./shiftHelpers/dayShiftLogic');
+const nightShiftLogic = require('./shiftHelpers/nightShiftLogic');
 const shiftDetails = {
 
   calculateDayShiftHours: (input) => {
@@ -6,6 +7,15 @@ const shiftDetails = {
       const fromDate = new Date(element.from);
       const toDate = new Date(element.to);
       element.totalDayShiftHours = dayShiftLogic(fromDate, toDate);
+    });
+    return input;
+  },
+
+  calculateNightShiftHours: (input) => {
+    input.forEach(function (element) {
+      const fromDate = new Date(element.from);
+      const toDate = new Date(element.to);
+      element.totalNightShiftHours = nightShiftLogic(fromDate, toDate);
     });
     return input;
   },

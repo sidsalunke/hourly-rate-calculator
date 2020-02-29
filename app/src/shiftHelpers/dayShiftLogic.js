@@ -12,7 +12,7 @@ const dayShiftLogic = (fromDate, toDate) => {
       totalDayShiftHours = (toDate - fromDate)/1000;
       totalDayShiftHours /= (60 * 60);
       if (totalDayShiftHours <= 14) {
-        return totalDayShiftHours;
+        return Math.round((totalDayShiftHours + Number.EPSILON) * 100) / 100
       }
     }
   }
