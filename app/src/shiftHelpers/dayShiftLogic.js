@@ -9,10 +9,10 @@ const dayShiftLogic = (fromDate, toDate) => {
 
   if (fromDateStartTime >= dayShiftStartTime && toDateStartTime <= dayShiftEndTime) {
     if (fromDateDay === toDateDay) {
-      totalDayShiftHours = (toDate - fromDate)/1000;
-      totalDayShiftHours /= (60 * 60);
+      totalDayShiftHours = (toDate - fromDate) / 1000;
+      totalDayShiftHours /= 60 * 60;
       if (totalDayShiftHours <= 14) {
-        return Math.round((totalDayShiftHours + Number.EPSILON) * 100) / 100
+        return Math.round((totalDayShiftHours + Number.EPSILON) * 100) / 100;
       }
     }
   }

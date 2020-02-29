@@ -1,0 +1,14 @@
+{
+  "extends": ["airbnb-base", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "class-methods-use-this": "off",
+    "lines-between-class-members": "off",
+    "no-console": "off",
+    "global-require": "off",
+    "import/no-global-require": "off",
+    "import/no-dynamic-require": "off",
+    "no-await-in-loop": "off"
+  }
+}
