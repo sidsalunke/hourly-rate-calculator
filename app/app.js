@@ -6,7 +6,8 @@ const data = JSON.parse(inputFile);
 
 let blah = shiftDetails.calculateDayShiftHours(data);
 blah = shiftDetails.calculateNightShiftHours(blah);
-blah = shiftDetails.checkIfShiftIsValid(blah);
+blah = shiftDetails.calculateSatShiftHours(blah);
+blah = shiftDetails.calculateSunShiftHours(blah);
 
 function finished() {
   console.log('done');

@@ -451,219 +451,50 @@ test('should return the total number of night shift hours as 0 if start and end 
   expect(expectedTestDataWithNightShiftHours).toEqual(actualTestDataWithNightShiftHours);
 });
 
-test('should return "isValid: true" if total number of hours for each shift is more than or equal to an hour', () => {
-  const inputTestDataForValidShiftHours = [
+test('should return the total number of Saturday shift hours', () => {
+  const inputTestData = [
     {
       id: 1,
-      from: '2017-10-23T08:00:00+11:00',
-      to: '2017-10-23T11:00:00+11:00',
-      totalDayShiftHours: 3,
-      totalNightShiftHours: 0,
-    },
-    {
-      id: 2,
-      from: '2017-10-20T09:00:00+11:00',
-      to: '2017-10-20T11:45:00+11:00',
-      totalDayShiftHours: 2.75,
-      totalNightShiftHours: 0,
-    },
-    {
-      id: 3,
-      from: '2017-10-18T18:00:00+11:00',
-      to: '2017-10-18T21:30:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 3.5,
-    },
-    {
-      id: 4,
-      from: '2017-10-18T18:00:00+11:00',
-      to: '2017-10-19T06:00:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 12,
-    },
-    {
-      id: 5,
-      from: '2017-10-21T14:00:00+11:00',
-      to: '2017-10-21T22:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 8,
-    },
-    {
-      id: 6,
-      from: '2017-10-17T19:00:00+11:00',
-      to: '2017-10-17T19:30:00+11:00',
-      totalDayShiftHours: 0.5,
-      totalNightShiftHours: 0,
-    },
-    {
-      id: 7,
-      from: '2017-10-20T10:00:00+11:00',
-      to: '2017-10-19T11:30:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 0,
-    },
-    {
-      id: 8,
-      from: '2017-10-18T18:00:00+11:00',
-      to: '2017-10-18T19:00:00-11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 0,
-    },
-    {
-      id: 9,
-      from: '2017-10-24T22:00:00+11:00',
-      to: '2017-10-25T23:00:00+11:00',
-      totalDayShiftHours: 0,
+      from: '2020-02-29T06:00:00+11:00',
+      to: '2020-02-29T10:00:00+11:00',
+      totalDayShiftHours: 4,
       totalNightShiftHours: 0,
     },
   ];
-  const expectedTestDataWithValidShiftHours = [
+  const expectedTestDataWithSatShiftHours = [
     {
       id: 1,
-      from: '2017-10-23T08:00:00+11:00',
-      to: '2017-10-23T11:00:00+11:00',
-      totalDayShiftHours: 3,
-      totalNightShiftHours: 0,
-      isValid: true,
-    },
-    {
-      id: 2,
-      from: '2017-10-20T09:00:00+11:00',
-      to: '2017-10-20T11:45:00+11:00',
-      totalDayShiftHours: 2.75,
-      totalNightShiftHours: 0,
-      isValid: true,
-    },
-    {
-      id: 3,
-      from: '2017-10-18T18:00:00+11:00',
-      to: '2017-10-18T21:30:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 3.5,
-      isValid: true,
-    },
-    {
-      id: 4,
-      from: '2017-10-18T18:00:00+11:00',
-      to: '2017-10-19T06:00:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 12,
-      isValid: true,
-    },
-    {
-      id: 5,
-      from: '2017-10-21T14:00:00+11:00',
-      to: '2017-10-21T22:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 8,
-      isValid: true,
-    },
-    {
-      id: 6,
-      from: '2017-10-17T19:00:00+11:00',
-      to: '2017-10-17T19:30:00+11:00',
-      totalDayShiftHours: 0.5,
-      totalNightShiftHours: 0,
-      isValid: false,
-    },
-    {
-      id: 7,
-      from: '2017-10-20T10:00:00+11:00',
-      to: '2017-10-19T11:30:00+11:00',
+      from: '2020-02-29T06:00:00+11:00',
+      to: '2020-02-29T10:00:00+11:00',
       totalDayShiftHours: 0,
       totalNightShiftHours: 0,
-      isValid: false,
-    },
-    {
-      id: 8,
-      from: '2017-10-18T18:00:00+11:00',
-      to: '2017-10-18T19:00:00-11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 0,
-      isValid: false,
-    },
-    {
-      id: 9,
-      from: '2017-10-24T22:00:00+11:00',
-      to: '2017-10-25T23:00:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 0,
-      isValid: false,
+      totalSatShiftHours: 4,
     },
   ];
-  const actualTestDataWithValidShiftHours = shiftDetails.checkIfShiftIsValid(
-    inputTestDataForValidShiftHours,
-  );
-  expect(expectedTestDataWithValidShiftHours).toEqual(actualTestDataWithValidShiftHours);
+  const actualTestDataWithSatShiftHours = shiftDetails.calculateSatShiftHours(inputTestData);
+  expect(expectedTestDataWithSatShiftHours).toEqual(actualTestDataWithSatShiftHours);
 });
 
-test('should return "isValid: true" if total number of hours for each shift is less than or equal to 24 hours', () => {
-  const inputTestDataForValidShiftHours = [
+test('should return the total number of Sunday shift hours', () => {
+  const inputTestData = [
     {
       id: 1,
-      from: '2017-10-23T08:00:00+11:00',
-      to: '2017-10-23T11:00:00+11:00',
-      totalDayShiftHours: 3,
+      from: '2020-03-01T06:00:00+11:00',
+      to: '2020-03-01T10:00:00+11:00',
+      totalDayShiftHours: 4,
       totalNightShiftHours: 0,
     },
-    {
-      id: 2,
-      from: '2017-10-20T09:00:00+11:00',
-      to: '2017-10-20T11:45:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 28,
-    },
-    {
-      id: 3,
-      from: '2017-10-18T18:00:00+11:00',
-      to: '2017-10-18T21:30:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: -9,
-    },
-    {
-      id: 4,
-      from: '2017-10-18T18:00:00+11:00',
-      to: '2017-10-19T06:00:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 0.9,
-    },
   ];
-  const expectedTestDataWithValidShiftHours = [
+  const expectedTestDataWithSunShiftHours = [
     {
       id: 1,
-      from: '2017-10-23T08:00:00+11:00',
-      to: '2017-10-23T11:00:00+11:00',
-      totalDayShiftHours: 3,
+      from: '2020-03-01T06:00:00+11:00',
+      to: '2020-03-01T10:00:00+11:00',
+      totalDayShiftHours: 0,
       totalNightShiftHours: 0,
-      isValid: true,
-    },
-    {
-      id: 2,
-      from: '2017-10-20T09:00:00+11:00',
-      to: '2017-10-20T11:45:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 28,
-      isValid: false,
-    },
-    {
-      id: 3,
-      from: '2017-10-18T18:00:00+11:00',
-      to: '2017-10-18T21:30:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: -9,
-      isValid: false,
-    },
-    {
-      id: 4,
-      from: '2017-10-18T18:00:00+11:00',
-      to: '2017-10-19T06:00:00+11:00',
-      totalDayShiftHours: 0,
-      totalNightShiftHours: 0.9,
-      isValid: false,
+      totalSunShiftHours: 4,
     },
   ];
-  const actualTestDataWithValidShiftHours = shiftDetails.checkIfShiftIsValid(
-    inputTestDataForValidShiftHours,
-  );
-  expect(expectedTestDataWithValidShiftHours).toEqual(actualTestDataWithValidShiftHours);
+  const actualTestDataWithSunShiftHours = shiftDetails.calculateSunShiftHours(inputTestData);
+  expect(expectedTestDataWithSunShiftHours).toEqual(actualTestDataWithSunShiftHours);
 });
