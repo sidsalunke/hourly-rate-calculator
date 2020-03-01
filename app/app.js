@@ -6,8 +6,11 @@ const data = JSON.parse(inputFile);
 
 const expectedJson = transformJson.transform(data);
 
-function finished() {
-  console.log('done');
+function finished(error) {
+  if (error) {
+    throw error;
+  }
+  console.log('Finished writing to file.');
 }
 
 fs.writeFile('./output.json', JSON.stringify(expectedJson, null, 2), finished);
